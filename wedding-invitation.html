@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Nikah &amp; Walima — Md TariqAziz Shaikh &amp; Umme Rumaan Sayed · 27 &amp; 28 September 2026, Belgaum</title>
+<meta name="description" content="Together with their families. Nikah: Sunday 27 September 2026, 12:45 PM at Mali Munch Hall, Autonagar, Belgaum. Walima: Monday 28 September 2026, 7:00 PM at Prestige Lawns, Bauxite Road, Vaibhav Nagar, Belgaum.">
+<meta name="theme-color" content="#1E0F2E">
+
+<!-- Open Graph (WhatsApp link preview) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nikah &amp; Walima — TariqAziz &amp; Rumaan">
+<meta property="og:description" content="Together with their families. Nikah: Sun 27 Sep 2026, 12:45 PM · Mali Munch Hall, Autonagar, Belgaum. Walima: Mon 28 Sep 2026, 7:00 PM · Prestige Lawns, Belgaum. #TariqAndRumaan">
+<meta property="og:site_name" content="TariqAziz &amp; Rumaan">
+<meta name="twitter:card" content="summary">
+
+<!-- Fonts: display=swap prevents invisible text reflow -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Scroll animation library (ONE: AOS) -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --plum:#1E0F2E;          /* deep velvet plum - primary dark */
+  --plum-deep:#170A24;     /* richer dark for gradients */
+  --plum-mid:#2D1B4E;      /* cards / timeline */
+  --plum-card:#241438;     /* countdown boxes */
+  --gold:#C9A84C;          /* foil accent (decorative) */
+  --gold-light:#E8D5A3;    /* gold text on dark - 7.2:1 on plum */
+  --gold-deep:#8A6D1F;     /* dark gold - never used for body text */
+  --ivory:#FFF8F0;         /* light sections */
+  --cream:#FAF1E1;
+  --text-on-light:#2D1B4E; /* plum body text on ivory - 14.5:1 */
+  --text-on-light-head:#1E0F2E; /* 17.2:1 on ivory */
+  --muted-on-light:#5A4A75;     /* 7.5:1 on ivory */
+  --wax:#6E2233;           /* wax seal (burgundy, no green) */
+  --wax-deep:#4A1522;
+  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'Montserrat','Segoe UI',system-ui,sans-serif;
+  --ar:Amiri, 'Scheherazade New', 'Times New Roman', serif;
+  --ease:cubic-bezier(0.65,0,0.35,1);  /* smooth, no bounce */
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:var(--sans);
+  font-weight:400;
+  color:var(--gold-light);
+  background:var(--plum);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+body.lock{ overflow:hidden; height:100%; overscroll-behavior:none; }
+img,svg{ display:block; max-width:100%; }
+button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+a{ color:inherit; text-decoration:none; }
+:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:2px; }
+
+/* Arabic text is isolated so it never bleeds into LTR layout */
+.ar{ font-family:var(--ar); direction:rtl; unicode-bidi:isolate; }
+.smallcaps{ font-family:var(--sans); text-transform:uppercase; letter-spacing:.28em; }
+
+/* Layout helpers */
+.wrap{ width:min(100% - clamp(28px,6vw,72px), 1080px); margin-inline:auto; }
+section{ position:relative; padding-block:clamp(68px,11vh,128px); }
+
+/* Fallback visibility: if JS never runs, nothing animated stays hidden */
+html.no-js [data-aos],
+html.no-aos [data-aos]{ opacity:1 !important; transform:none !important; transition:none !important; }
+
+/* ============================================================
+   INTRO — ENVELOPE + WAX SEAL
+   ============================================================ */
+#intro{
+  position:fixed; inset:0; z-index:1000;
+  min-height:100vh; min-height:100dvh;
+  display:grid; place-items:center;
+  background:radial-gradient(130% 100% at 50% 32%, #3A2A56 0%, #241338 58%, #170A24 100%);
+  /* safe-area */
+  padding:
+    max(24px, env(safe-area-inset-top))
+    max(24px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom))
+    max(24px, env(safe-area-inset-left));
+  transition: transform .72s var(--ease);
+  overflow:hidden;
+}
+#intro.lift{ transform:translate3d(0,-101%,0); pointer-events:none; }
+
+/* radiant light rays behind the envelope: a bright glowing core sits at
+   the seal, soft-blurred spokes radiate outward and fade to transparent
+   toward the tips (mask falloff + core bloom), so it reads as light -
+   not crisp vector lines. The element itself NEVER translates: it only
+   snaps to full brightness, holds, then fades out in place while the
+   envelope flap peels underneath. */
+.rays{
+  position:absolute; inset:0; z-index:1;
+  background:repeating-conic-gradient(
+    rgba(255,243,196,.95) 0deg 1.4deg,
+    rgba(255,243,196,0) 1.4deg 9.5deg
+  );
+  /* spokes fade in intensity with distance from center (bright core -> transparent tips) */
+  -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.35) 58%, transparent 78%);
+  mask-image:radial-gradient(circle at 50% 50%, #000 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.35) 58%, transparent 78%);
+  /* soft luminous quality on each ray - not a crisp edge */
+  filter:blur(1.4px);
+  -webkit-filter:blur(1.4px);
+  opacity:0;
+  transition:opacity .18s linear;   /* rays SNAP to full brightness ~150-200ms after tap */
+  will-change:opacity;
+  pointer-events:none;
+}
+/* luminous core bloom at the seal's center */
+.rays::after{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(circle at 50% 50%, #FFF8DC 0%, rgba(255,236,180,.75) 14%, rgba(255,220,140,.28) 34%, transparent 55%);
+}
+#intro.rayed .rays{ opacity:1; }
+#intro.rayed-fade .rays{
+  opacity:0;
+  transition:opacity .38s linear;   /* fade out IN PLACE - no movement */
+}
+
+/* decorative filigree corners drawn on the stage */
+.stage{
+  position:relative; display:grid; place-items:center;
+  --off:clamp(20px, 6vw, 54px);   /* stays inside intro padding on small screens */
+}
+.filigree{ position:absolute; width:clamp(56px,14vw,92px); height:clamp(56px,14vw,92px); color:var(--gold); opacity:.85; pointer-events:none; }
+.f-tl{ top:calc(-1 * var(--off)); left:calc(-1 * var(--off)); }
+.f-tr{ top:calc(-1 * var(--off)); right:calc(-1 * var(--off)); transform:rotate(90deg); }
+.f-bl{ bottom:calc(-1 * var(--off)); left:calc(-1 * var(--off)); transform:rotate(-90deg); }
+.f-br{ bottom:calc(-1 * var(--off)); right:calc(-1 * var(--off)); transform:rotate(180deg); }
+
+.visually-hidden{
+  position:absolute; width:1px; height:1px; overflow:hidden;
+  clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap;
+}
+
+/* --- envelope --- */
+.env-wrap{ position:relative; perspective:1600px; }
+.envelope{
+  position:relative;
+  width:min(86vw, 600px);      /* mobile: ~86% of screen width */
+  aspect-ratio:8/5;
+  transform-style:preserve-3d;
+  /* 44px minimum even at tiny sizes */
+  min-height:44px;
+  outline:none;
+}
+@media (min-width:768px){ .envelope{ width:min(64vw, 720px); } }  /* desktop: 60-70% of viewport */
+.envelope:focus-visible .env-body{ box-shadow:0 0 0 3px var(--gold), 0 18px 40px rgba(0,0,0,.45); }
+
+/* "peel away" lift: after rays + seal dissolve, the open envelope
+   translates up off-screen quickly, revealing the hero underneath */
+.envelope.lift{ transition:transform .55s var(--ease); transform:translate3d(0,-140%,0); }
+
+/* envelope body (back panel + drawn folds) */
+.env-body{
+  position:absolute; inset:0;
+  background:linear-gradient(145deg, #FFFDF7 0%, #F5E9D2 55%, #EBDCBE 100%);
+  border:1px solid var(--gold);
+  border-radius:7px;
+  box-shadow:0 22px 50px rgba(0,0,0,.5);
+  overflow:hidden;
+}
+/* left + right corner folds drawn as shaded triangles */
+.env-body::before, .env-body::after{
+  content:""; position:absolute; width:50%; height:55%; bottom:0;
+  background:linear-gradient(160deg, #F2E3C4, #E8D5A9);
+  border-top:1px solid rgba(201,168,76,.55);
+}
+.env-body::before{ left:0; clip-path:polygon(0 0, 100% 100%, 0 100%); }
+.env-body::after{ right:0; clip-path:polygon(100% 0, 100% 100%, 0 100%); }
+
+/* front flap: triangle that rotates open around the top hinge.
+   Note: clip-path runs BEFORE transform (both name the same element) -
+   a rotating clipped triangle would sheared - so we split:
+   the outer .env-flap applies transform-origin + rotateX, the inner
+   .env-flap-shape carries the clip-path + gradient. */
+.env-flap{
+  position:absolute; inset:0;
+  /* rest closed: coplanar with the shell (rotateX(0)) */
+  transform:rotateX(0deg);
+  transform-origin:50% 0;
+  transition:transform .5s var(--ease);
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  will-change:transform;
+  z-index:2;
+  pointer-events:none;
+}
+/* flap physically peels open around the top hinge, then lifts away */
+.envelope.peeled .env-flap{ transform:rotateX(-180deg) translateY(-46%); }
+.env-flap-shape{
+  position:absolute; inset:0;
+  background:linear-gradient(200deg, #FFFDF7 0%, #F6EAD2 60%, #EFDFBE 100%);
+  clip-path:polygon(0 0, 100% 0, 50% 100%);
+  border:1px solid rgba(201,168,76,.7);
+  border-bottom:0;
+  border-radius:7px 7px 0 0;
+}
+
+/* subtle floor shadow under envelope */
+.env-shadow{
+  position:absolute; left:8%; right:8%; bottom:-22px; height:18px;
+  background:radial-gradient(50% 100% at 50% 0%, rgba(0,0,0,.5), transparent 70%);
+  filter:blur(5px); pointer-events:none;
+}
+
+/* --- wax seal medallion (button: 44px min target) --- */
+.seal{
+  position:absolute; left:50%; top:48%; z-index:3;
+  width:clamp(96px, 26vw, 150px); height:clamp(96px, 26vw, 150px);
+  transform:translate(-50%,-50%);
+  transition:opacity .22s linear, transform .28s var(--ease);
+  opacity:1;
+  border-radius:50%;
+  display:grid; place-items:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,.28), transparent 42%),
+    radial-gradient(circle at 62% 72%, rgba(0,0,0,.35), transparent 50%),
+    linear-gradient(145deg, var(--wax), var(--wax-deep));
+  border:2px solid rgba(201,168,76,.9);
+  box-shadow:
+    0 6px 16px rgba(0,0,0,.45),
+    inset 0 -4px 10px rgba(0,0,0,.4),
+    inset 0 4px 8px rgba(255,255,255,.15);
+  color:var(--gold-light);
+  will-change:transform,opacity;
+}
+.seal:focus-visible{ outline:3px solid var(--gold-light); outline-offset:4px; }
+.seal.broken{ opacity:0; transform:translate(-50%,-50%) scale(.62); transition:opacity .22s linear, transform .30s var(--ease); }
+.seal-inner{ padding:2px; font-family:var(--ar); font-size:clamp(11px, 3.2vw, 15px); line-height:1.85; }
+
+.intro-hint{
+  position:absolute; bottom:max(30px, calc(env(safe-area-inset-bottom) + 18px));
+  left:50%; transform:translateX(-50%);
+  font-size:clamp(.72rem, 2.2vw, .9rem); letter-spacing:.34em; text-transform:uppercase;
+  color:var(--gold-light); opacity:.85;
+  animation:hintPulse 2.6s var(--ease) infinite;
+  white-space:nowrap; pointer-events:none;
+}
+#intro.lift .intro-hint{ opacity:0; }
+@keyframes hintPulse{ 0%,100%{opacity:.5; transform:translateX(-50%) translateY(0);} 50%{opacity:1; transform:translateX(-50%) translateY(-4px);} }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero{
+  min-height:100vh; min-height:100dvh;
+  display:grid; align-items:center;
+  text-align:center;
+  background:
+    radial-gradient(110% 80% at 50% 0%, rgba(75,44,120,.5), transparent 55%),
+    radial-gradient(80% 60% at 50% 100%, rgba(201,168,76,.08), transparent 60%),
+    linear-gradient(180deg, var(--plum-deep), var(--plum) 55%, var(--plum-deep));
+  overflow:hidden;
+}
+.hero-inner{ position:relative; z-index:2; padding-block:clamp(48px,9vh,96px); }
+
+.hero-label{
+  display:inline-flex; align-items:center; gap:12px;
+  font-family:var(--sans); font-weight:500;
+  font-size:clamp(.78rem, 2.6vw, 1rem);
+  letter-spacing:.42em; text-indent:.42em;
+  color:var(--gold-light);
+  text-transform:uppercase;
+}
+.hero-label svg.l{ width:clamp(34px,8vw,44px); height:auto; }
+.hero-label svg.r{ width:clamp(34px,8vw,44px); height:auto; transform:scaleX(-1); }
+
+.hero-family{
+  margin-top:clamp(18px,3.5vh,30px);
+  font-family:var(--serif); font-style:italic;
+  font-size:clamp(1.15rem, 3.6vw, 1.7rem);
+  color:var(--cream);
+}
+.hero-names{
+  margin-top:clamp(6px,1.5vh,12px);
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(2.05rem, 7.4vw, 4.3rem);
+  line-height:1.16;
+  color:var(--gold-light);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center;
+}
+.hero-names .name-line{ display:block; }
+.hero-names .amp{
+  display:block;
+  font-style:italic; font-weight:500;
+  font-size:.46em; line-height:1;
+  color:var(--cream);
+  padding-block:.18em .12em;
+}
+.hero-date{
+  margin-top:clamp(14px,3vh,26px);
+  font-family:var(--serif); font-size:clamp(1.05rem,3.2vw,1.5rem);
+  color:var(--cream);
+}
+.hero-date b{ font-weight:600; color:var(--gold-light); }
+.hero-hashtag{
+  margin-top:clamp(10px,2vh,18px);
+  font-size:clamp(.78rem,2.4vw,.95rem);
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold);
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:48px; min-width:44px;
+  padding:0.95em 2.4em;
+  border:1px solid var(--gold);
+  border-radius:2px;
+  font-size:clamp(.78rem,2.3vw,.95rem);
+  letter-spacing:.26em; text-transform:uppercase; font-weight:500;
+  color:var(--gold-light);
+  background:rgba(201,168,76,.06);
+  transition:background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
+}
+.btn:hover{ background:rgba(201,168,76,.18); color:#FFFDF6; }
+.btn:active{ transform:translateY(1px); }
+.hero-btn{ margin-top:clamp(24px,4.5vh,40px); }
+
+.scroll-hint{
+  position:absolute; bottom:max(22px, calc(env(safe-area-inset-bottom) + 14px));
+  left:50%; transform:translateX(-50%);
+  display:inline-flex; flex-direction:column; align-items:center; gap:6px;
+  min-width:44px; min-height:44px; justify-content:center;
+  font-family:var(--sans); font-size:clamp(.66rem,2vw,.8rem);
+  letter-spacing:.3em; text-transform:uppercase; color:var(--gold-light);
+  z-index:2; opacity:.9;
+}
+.scroll-hint .chev{ width:16px; height:10px; animation:chevDown 2s var(--ease) infinite; will-change:transform,opacity; }
+@keyframes chevDown{ 0%,100%{opacity:.5; transform:translateY(0);} 50%{opacity:1; transform:translateY(5px);} }
+
+/* ambient gold shimmer particles (spawned by JS).
+   Each particle drifts slowly via translateY with per-particle
+   --dy distance, --dur duration and randomized delay; transform only. */
+.hero-particles{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.hero-particles i{
+  position:absolute; border-radius:50%; background:radial-gradient(circle, #F3E4B8, rgba(243,228,184,0));
+  opacity:0; will-change:transform,opacity;
+  animation:floatUp var(--dur,14s) var(--ease) infinite;
+  animation-delay:var(--delay,0s);
+}
+@keyframes floatUp{
+  0%{ transform:translate3d(0,var(--dy,30px),0) scale(var(--scl,1)); opacity:0; }
+  15%{ opacity:var(--peak,.85); }
+  100%{ transform:translate3d(0,calc(var(--dy,30px) * -1),0) scale(var(--scl,1)); opacity:0; }
+}
+
+/* ============================================================
+   VERSE SECTION (dark)
+   ============================================================ */
+#verse{ background:linear-gradient(180deg, var(--plum-deep), var(--plum-mid)); }
+.sec-title{
+  text-align:center;
+  font-size:clamp(.8rem,2.5vw,1rem); letter-spacing:.4em; text-transform:uppercase;
+  color:var(--gold); font-weight:500;
+}
+.sec-ornament{
+  margin:14px auto 0; width:clamp(90px,20vw,140px); height:auto;
+  color:var(--gold); opacity:.9;
+}
+.verse-card{
+  margin-top:clamp(26px,5vh,44px);
+  max-width:860px; margin-inline:auto;
+  padding:clamp(24px,4.5vw,44px);
+  background:linear-gradient(160deg, var(--plum-card), rgba(45,27,78,.5));
+  border:1px solid rgba(201,168,76,.4);
+  border-radius:4px;
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+  text-align:center;
+}
+.verse-arabic{
+  font-family:var(--ar); font-size:clamp(1.4rem, 5.4vw, 2.3rem);
+  line-height:2.05; color:var(--gold-light);
+  direction:rtl; unicode-bidi:isolate;
+}
+.verse-translation{
+  margin-top:clamp(12px,2.4vh,22px);
+  font-family:var(--serif); font-style:italic;
+  font-size:clamp(1.02rem,3.4vw,1.35rem);
+  color:var(--cream);
+}
+.verse-ref{
+  margin-top:clamp(10px,2vh,18px);
+  font-size:clamp(.68rem,2.2vw,.8rem);
+  letter-spacing:.3em; text-transform:uppercase;
+  color:var(--gold);
+}
+
+/* ============================================================
+   OUR INVITATION (light) — flip card
+   ============================================================ */
+#invitation{ background:var(--ivory); color:var(--text-on-light); }
+#invitation .sec-title{ color:var(--gold-deep); font-weight:600; }
+#invitation .sec-ornament{ opacity:.75; }
+
+.card-flip{ perspective:1500px; margin-inline:auto; margin-top:clamp(28px,5vh,48px); max-width:680px; }
+.card-inner{
+  position:relative; display:grid;
+  transform-style:preserve-3d;
+  transition:transform 1.05s var(--ease);
+  will-change:transform;
+}
+.card-inner.open{ transform:rotateY(180deg); }
+.card-face{
+  grid-area:1 / 1;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  background:linear-gradient(160deg, #FFFDF7, var(--cream));
+  border:1px solid rgba(138,109,31,.55);
+  border-radius:6px;
+  padding:clamp(22px,4.5vw,42px);
+  box-shadow:0 20px 44px rgba(30,15,46,.14);
+}
+.card-back{ transform:rotateY(180deg); }
+
+/* sealed FRONT face */
+.card-front{ display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:clamp(320px,52vh,430px); text-align:center; }
+.card-front .smallcaps{ font-size:clamp(.7rem,2.2vw,.86rem); letter-spacing:.34em; color:var(--gold-deep); font-weight:600; margin-top:6px; }
+.card-front h3{
+  font-family:var(--serif); font-weight:600;
+  font-size:clamp(1.8rem,6vw,2.6rem); color:var(--text-on-light-head);
+  margin-top:10px;
+}
+.seal-btn{
+  margin-top:clamp(18px,3.5vh,30px);
+  width:clamp(76px,22vw,96px); height:clamp(76px,22vw,96px);
+  display:grid; place-items:center;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255,255,255,.3), transparent 42%),
+    radial-gradient(circle at 62% 72%, rgba(0,0,0,.32), transparent 50%),
+    linear-gradient(145deg, var(--wax), var(--wax-deep));
+  border:2px solid rgba(138,109,31,.85);
+  box-shadow:0 8px 18px rgba(30,15,46,.3), inset 0 -4px 9px rgba(0,0,0,.38), inset 0 4px 7px rgba(255,255,255,.14);
+  color:var(--gold-light); font-family:var(--ar); font-size:clamp(10px,2.6vw,13px);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  will-change:transform;
+}
+.seal-btn:hover{ transform:scale(1.06); }
+.seal-btn:focus-visible{ outline:3px solid var(--gold-deep); outline-offset:4px; }
+.seal-btn .ar{ line-height:1.8; padding:2px; }
+
+/* unfolded BACK face */
+.card-back{ text-align:center; }
+.card-back .smallcaps{ color:var(--gold-deep); font-weight:600; }
+.card-back p.invite-message{
+  margin-top:clamp(14px,3vh,24px);
+  font-family:var(--serif); font-size:clamp(1.12rem,3.8vw,1.5rem);
+  line-height:1.75; color:var(--text-on-light);
+}
+.card-back .signature{ margin-top:clamp(16px,3.4vh,28px); font-family:var(--serif); font-style:italic; font-size:clamp(1.05rem,3.4vw,1.35rem); color:var(--text-on-light-head); }
+.card-hint{ margin-top:12px; font-size:clamp(.68rem,2.1vw,.8rem); letter-spacing:.22em; text-transform:uppercase; color:var(--muted-on-light); }
+
+/* ============================================================
+   OUR VENUE (dark)
+   ============================================================ */
+#venue{ background:linear-gradient(180deg, var(--plum-mid), var(--plum-deep)); }
+.venue-grid{
+  margin-top:clamp(28px,5vh,48px);
+  display:grid; gap:clamp(20px,3.5vw,32px);
+}
+@media (min-width:860px){
+  .venue-grid{ grid-template-columns:1fr 1fr; align-items:start; }
+}
+.venue-card{
+  display:flex; flex-direction:column; gap:14px;
+  padding:clamp(24px,4.5vw,38px);
+  background:linear-gradient(160deg, var(--plum-card), rgba(30,15,46,.65));
+  border:1px solid rgba(201,168,76,.45);
+  border-radius:4px;
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+  text-align:center;
+}
+.venue-tag{
+  display:inline-block; align-self:center;
+  font-size:clamp(.68rem,2.2vw,.8rem); letter-spacing:.34em; text-transform:uppercase; font-weight:600;
+  color:var(--plum-deep); background:var(--gold-light);
+  padding:.55em 1.4em; border-radius:2px;
+}
+.venue-card h3{ font-family:var(--serif); font-weight:600; font-size:clamp(1.5rem,5vw,2.1rem); color:var(--gold-light); }
+.venue-addr{ font-size:clamp(.95rem,3vw,1.1rem); color:var(--cream); }
+.venue-time{ font-size:clamp(.82rem,2.6vw,.95rem); letter-spacing:.05em; color:var(--gold); }
+.venue-note{ font-size:clamp(.72rem,2.3vw,.82rem); color:var(--cream); opacity:.85; }
+.venue-foot{ display:flex; align-items:center; justify-content:center; gap:clamp(14px,3vw,22px); flex-wrap:wrap; margin-top:6px; }
+
+.btn-outline{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:48px; min-width:44px; padding:.85em 1.9em;
+  border:1px solid var(--gold); color:var(--gold-light);
+  font-size:clamp(.72rem,2.3vw,.86rem); letter-spacing:.22em; text-transform:uppercase;
+  background:rgba(201,168,76,.06);
+  transition:background .35s var(--ease), color .35s var(--ease);
+}
+.btn-outline:hover{ background:rgba(201,168,76,.18); color:#FFFDF6; }
+
+/* ============================================================
+   WEDDING EVENTS TIMELINE (light)   id="schedule"
+   ============================================================ */
+#schedule{ background:var(--ivory); color:var(--text-on-light); scroll-margin-top:20px; }
+#schedule .sec-title{ color:var(--gold-deep); font-weight:600; }
+
+.tl{ position:relative; margin-top:clamp(30px,5.5vh,52px); max-width:920px; margin-inline:auto; }
+/* vertical gold line */
+.tl::before{
+  content:""; position:absolute; top:8px; bottom:8px; left:27px; width:2px;
+  background:linear-gradient(180deg, var(--gold-deep), rgba(138,109,31,.25));
+}
+@media (min-width:768px){
+  .tl::before{ left:50%; transform:translateX(-50%); }
+}
+.tl-item{
+  position:relative;
+  display:grid; grid-template-columns:56px 1fr; gap:clamp(14px,3vw,26px);
+  align-items:start;
+  margin-bottom:clamp(26px,5vh,44px);
+}
+.tl-item:last-child{ margin-bottom:0; }
+.tl-marker{
+  grid-column:1; justify-self:center; align-self:center;
+  width:min(56px, 100%); display:grid; place-items:center;
+}
+.tl-marker svg{ width:clamp(30px,7vw,40px); height:auto; filter:drop-shadow(0 2px 4px rgba(138,109,31,.4)); }
+.tl-card{
+  grid-column:2;
+  padding:clamp(18px,3.4vw,30px);
+  background:#FFFDF7;
+  border:1px solid rgba(138,109,31,.4);
+  border-left:3px solid var(--gold-deep);
+  border-radius:4px;
+  box-shadow:0 12px 28px rgba(30,15,46,.1);
+  text-align:left;
+}
+.tl-card h3{ font-family:var(--serif); font-weight:600; font-size:clamp(1.3rem,4.6vw,1.8rem); color:var(--text-on-light-head); }
+.tl-card .when{ margin-top:6px; font-size:clamp(.86rem,2.8vw,1rem); letter-spacing:.04em; color:var(--gold-deep); font-weight:600; }
+.tl-card .where{ margin-top:4px; font-family:var(--serif); font-size:clamp(1rem,3.3vw,1.22rem); color:var(--text-on-light); }
+.tl-card .note{ margin-top:10px; font-size:clamp(.74rem,2.4vw,.85rem); color:var(--muted-on-light); }
+
+@media (min-width:768px){
+  .tl-item{ grid-template-columns:1fr 68px 1fr; }
+  .tl-marker{ grid-column:2; grid-row:1; }
+  .tl-item .tl-card{ grid-column:3; grid-row:1; text-align:left; }
+  .tl-item:nth-child(odd) .tl-card{ grid-column:1; grid-row:1; text-align:right; border-left:0; border-right:3px solid var(--gold-deep); }
+}
+
+/* ============================================================
+   COUNTDOWN (dark)
+   ============================================================ */
+#countdown{
+  background:
+    radial-gradient(90% 70% at 50% 0%, rgba(75,44,120,.45), transparent 60%),
+    linear-gradient(180deg, var(--plum-deep), var(--plum) 60%, var(--plum-deep));
+  overflow:hidden;
+}
+.countdown-stars{ position:absolute; inset:0; pointer-events:none; }
+.countdown-stars i{
+  position:absolute; color:var(--gold-light); font-size:clamp(8px,2.2vw,13px);
+  opacity:0; animation:twinkle 4.5s var(--ease) infinite; will-change:transform,opacity;
+}
+@keyframes twinkle{ 0%,100%{opacity:0; transform:scale(.6) rotate(0deg);} 50%{opacity:.9; transform:scale(1.05) rotate(20deg);} }
+
+.cd-grid{
+  margin-top:clamp(28px,5vh,48px);
+  display:grid; gap:clamp(18px,3.5vw,32px);
+}
+@media (min-width:768px){
+  .cd-grid{ grid-template-columns:1fr 1fr; align-items:stretch; }
+}
+.cd-box{
+  position:relative;
+  padding:clamp(22px,4vw,34px) clamp(18px,3.4vw,30px);
+  background:linear-gradient(165deg, var(--plum-card), rgba(30,15,46,.6));
+  border:2px solid var(--gold);
+  outline:1px solid rgba(201,168,76,.28); outline-offset:3px;
+  border-radius:4px;
+  box-shadow:0 20px 44px rgba(0,0,0,.4), inset 0 0 34px rgba(201,168,76,.05);
+  text-align:center;
+}
+/* corner sparkles */
+.cd-box .spark{ position:absolute; width:clamp(16px,4vw,22px); height:auto; color:var(--gold-light); opacity:.9;
+  animation:sparkle 2.8s var(--ease) infinite; will-change:transform,opacity; }
+.cd-box .s1{ top:9px; left:9px; } .cd-box .s2{ top:9px; right:9px; }
+.cd-box .s3{ bottom:9px; left:9px; } .cd-box .s4{ bottom:9px; right:9px; animation-delay:.7s; }
+@keyframes sparkle{ 0%,100%{opacity:.35; transform:scale(.85) rotate(0deg);} 50%{opacity:1; transform:scale(1.1) rotate(25deg);} }
+
+.cd-eyebrow{ font-size:clamp(.68rem,2.2vw,.8rem); letter-spacing:.3em; text-transform:uppercase; color:var(--gold); }
+.cd-target{ margin-top:6px; font-family:var(--serif); font-size:clamp(1.02rem,3.4vw,1.3rem); color:var(--gold-light); font-weight:600; }
+.cd-nums{
+  margin-top:clamp(14px,3vh,22px);
+  display:flex; justify-content:center; gap:clamp(8px,2.4vw,16px);
+  min-height:clamp(96px,20vw,116px); /* reserved so fonts loading can't cause CLS */
+}
+.cd-cell{
+  flex:1 1 0; max-width:clamp(74px,20vw,96px);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.35);
+  border-radius:3px;
+  padding:.5em .2em;
+}
+.cd-num{
+  font-family:var(--sans); font-weight:600;
+  font-size:clamp(1.5rem,6vw,2.2rem);
+  font-variant-numeric:tabular-nums;          /* digit changes don't shift width */
+  font-feature-settings:"tnum";
+  min-width:2.1ch; text-align:center;
+  color:#FFFDF6;
+}
+.cd-lab{ font-size:clamp(.58rem,1.9vw,.68rem); letter-spacing:.2em; text-transform:uppercase; color:var(--gold); }
+.cd-fallback{ margin-top:16px; font-size:clamp(.72rem,2.3vw,.84rem); color:var(--cream); opacity:.85; }
+
+/* ============================================================
+   BLESSINGS (light)
+   ============================================================ */
+#blessings{ background:var(--ivory); color:var(--text-on-light); text-align:center; }
+#blessings .sec-title{ color:var(--gold-deep); font-weight:600; }
+.bless-intro{
+  margin:clamp(14px,2.6vh,22px) auto 0; max-width:720px;
+  font-family:var(--serif); font-size:clamp(1.1rem,3.6vw,1.45rem); line-height:1.7;
+}
+.bless-grid{
+  margin-top:clamp(26px,4.5vh,42px);
+  display:grid; gap:clamp(18px,3vw,28px);
+}
+@media (min-width:768px){ .bless-grid{ grid-template-columns:1fr 1fr; } }
+.bless-card{
+  padding:clamp(24px,4.5vw,38px);
+  background:#FFFDF7;
+  border:1px solid rgba(138,109,31,.35);
+  border-top:3px solid var(--gold-deep);
+  border-radius:4px;
+  box-shadow:0 14px 32px rgba(30,15,46,.1);
+}
+.bless-card h3{ font-family:var(--serif); font-weight:600; font-size:clamp(1.4rem,4.8vw,1.9rem); color:var(--text-on-light-head); }
+.bless-card p{ margin-top:10px; font-family:var(--serif); font-size:clamp(1.02rem,3.4vw,1.28rem); line-height:1.7; color:var(--text-on-light); }
+.bless-card svg{ width:clamp(20px,5vw,28px); height:auto; margin:0 auto 10px; color:var(--gold-deep); }
+
+/* ============================================================
+   FOOTER (dark)
+   ============================================================ */
+footer{
+  position:relative;
+  background:linear-gradient(180deg, var(--plum), var(--plum-deep));
+  text-align:center;
+  padding-block:clamp(56px,9vh,90px);
+  padding-inline:max(20px, env(safe-area-inset-left)) max(20px, env(safe-area-inset-right));
+  padding-bottom:calc(clamp(56px,9vh,90px) + env(safe-area-inset-bottom));
+}
+.monogram{ margin-inline:auto; margin-bottom:clamp(12px,2.4vh,20px); width:clamp(56px,13vw,72px); height:clamp(56px,13vw,72px);
+  display:grid; place-items:center;
+  transform:rotate(45deg);
+  border:2px solid var(--gold);
+  background:rgba(201,168,76,.07);
+  box-shadow:0 0 0 5px rgba(201,168,76,.08);
+}
+.monogram span{ transform:rotate(-45deg); font-family:var(--serif); font-weight:600; font-size:clamp(1.05rem,3.5vw,1.4rem); color:var(--gold-light); }
+footer .wrap{ position:relative; z-index:1; }
+footer .names{ font-family:var(--serif); font-weight:600; font-size:clamp(1.45rem,5vw,2.1rem); color:var(--gold-light); }
+footer .thanks{ margin-top:clamp(8px,1.8vh,14px); font-family:var(--serif); font-style:italic; font-size:clamp(1.02rem,3.3vw,1.3rem); color:var(--cream); }
+footer .meta{ margin-top:clamp(14px,2.8vh,22px); font-size:clamp(.72rem,2.3vw,.85rem); letter-spacing:.24em; text-transform:uppercase; color:var(--gold); }
+footer .signoff{ margin-top:clamp(16px,3vh,26px); font-size:clamp(.68rem,2.1vw,.78rem); letter-spacing:.16em; color:var(--cream); opacity:.75; }
+
+/* ambient gold embers across dark sections (verse, countdown, footer).
+   Slow independent drift, transform-only, per-particle vars. */
+.embers{ position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.embers i{
+  position:absolute; border-radius:50%;
+  background:radial-gradient(circle, #F3E4B8, rgba(243,228,184,0));
+  opacity:0; will-change:transform,opacity;
+  animation:emberDrift var(--dur,16s) var(--ease) infinite;
+  animation-delay:var(--delay,0s);
+}
+@keyframes emberDrift{
+  0%{ transform:translate3d(0,var(--dy,40px),0) scale(var(--scl,.8)); opacity:0; }
+  12%{ opacity:var(--peak,.55); }
+  100%{ transform:translate3d(var(--dx,0),calc(var(--dy,40px) * -1),0) scale(var(--scl,.8)); opacity:0; }
+}
+
+/* sections that accept an ambient ember layer */
+section.amber{ overflow:hidden; }
+section.amber > .embers{ z-index:0; }
+section.amber > .wrap,
+section.amber > *:not(.embers){ position:relative; z-index:1; }
+
+/* ============================================================
+   REDUCED MOTION — flatten/skip all entrance & ambient animation
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:.001s !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001s !important;
+    transition-delay:0s !important;
+  }
+  .envelope .env-flap,
+  .card-inner,
+  .rays,
+  .rays::after,
+  .cd-box .spark,
+  .countdown-stars i,
+  .hero-particles i,
+  .embers i,
+  .scroll-hint .chev,
+  .intro-hint{ animation:none !important; transition:none !important; will-change:auto !important; }
+  [data-aos]{ opacity:1 !important; transform:none !important; transition:none !important; }
+}
+
+/* ============================================================
+   STATIC FALLBACK (JS off) — countdown + everything readable
+   ============================================================ */
+noscript{ display:block; }
+.ns-note{
+  margin-top:16px; margin-inline:auto; max-width:640px;
+  font-family:var(--serif); font-size:clamp(.95rem,3vw,1.1rem);
+  color:var(--cream); line-height:1.8;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ INTRO / ENVELOPE -->
+<div id="intro" aria-label="Wedding invitation envelope">
+  <div class="rays" aria-hidden="true"></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <path id="corner" d="M4 76 V4 H76 M4 58 C4 26 20 9 55 7 C59 27 49 43 29 55 C18 61 10 67 4 75 M4 38 V4 H38 M60 4 c3 7 7 11 14 12 M12 13 m-2.6 0 a2.6 2.6 0 1 0 5.2 0 a2.6 2.6 0 1 0 -5.2 0"
+        fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    </defs>
+  </svg>
+
+  <div class="stage">
+    <svg class="filigree f-tl" aria-hidden="true"><use href="#corner"/></svg>
+    <svg class="filigree f-tr" aria-hidden="true"><use href="#corner"/></svg>
+    <svg class="filigree f-bl" aria-hidden="true"><use href="#corner"/></svg>
+    <svg class="filigree f-br" aria-hidden="true"><use href="#corner"/></svg>
+
+    <div class="env-wrap">
+      <div class="envelope" id="envelope" role="button" tabindex="0"
+           aria-label="Open the wedding invitation">
+        <span class="env-body"></span>
+        <span class="env-flap"><span class="env-flap-shape"></span></span>
+        <span class="env-shadow" aria-hidden="true"></span>
+
+        <button type="button" class="seal" id="seal" aria-label="Break the wax seal to open the invitation">
+          <span class="seal-inner ar" lang="ar" dir="rtl">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p class="intro-hint" aria-hidden="true">Tap the seal to open</p>
+</div>
+
+<!-- ============================================================ HERO -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-particles" id="hero-particles" aria-hidden="true"></div>
+
+  <div class="hero-inner wrap">
+    <span class="hero-label">
+      <svg class="l" viewBox="0 0 56 26" aria-hidden="true">
+        <g fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M30 2.5 A10.5 10.5 0 1 1 30 23.5 A10.5 10.5 0 1 1 30 2.5 Z
+               M34.5 5.5 A8 8 0 1 0 34.5 20.5 A8 8 0 1 0 34.5 5.5 Z"/>
+          <path d="M52 9 l1.25 3 3 1.25 -3 1.25 -1.25 3 -1.25 -3 -3 -1.25 3 -1.25 Z"/>
+        </g>
+      </svg>
+      Nikah &amp; Walima
+      <svg class="r" viewBox="0 0 56 26" aria-hidden="true">
+        <g fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M30 2.5 A10.5 10.5 0 1 1 30 23.5 A10.5 10.5 0 1 1 30 2.5 Z
+               M34.5 5.5 A8 8 0 1 0 34.5 20.5 A8 8 0 1 0 34.5 5.5 Z"/>
+          <path d="M52 9 l1.25 3 3 1.25 -3 1.25 -1.25 3 -1.25 -3 -3 -1.25 3 -1.25 Z"/>
+        </g>
+      </svg>
+    </span>
+
+    <h1 class="hero-names" id="hero-title" tabindex="-1">
+      <span class="name-line">Md TariqAziz Shaikh</span>
+      <span class="amp" aria-hidden="true">&amp;</span>
+      <span class="name-line">Umme Rumaan Sayed</span>
+    </h1>
+
+    <p class="hero-family">Together with their families,</p>
+
+    <p class="hero-date">Sunday, 27 September 2026 &#183; <b>Belgaum</b></p>
+    <p class="hero-hashtag">#TariqAndRumaan</p>
+
+    <div><a class="btn hero-btn" href="#schedule">View Schedule</a></div>
+  </div>
+
+  <a class="scroll-hint" href="#verse">
+    Scroll to Explore
+    <svg class="chev" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 1 l7 7 7 -7"/></svg>
+  </a>
+</section>
+
+<!-- ============================================================ VERSES -->
+<section id="verse" class="amber" aria-label="Quranic verses">
+  <div class="embers" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="sec-title" data-aos="fade-up">From the Holy Quran</p>
+    <svg class="sec-ornament" viewBox="0 0 140 16" aria-hidden="true" data-aos="fade-up">
+      <path d="M2 8 H58 M82 8 H138" stroke="currentColor" stroke-width="1" fill="none"/>
+      <path d="M70 2 l3 5 5 1 -5 1 -3 5 -3 -5 -5 -1 5 -1 Z" fill="currentColor"/>
+    </svg>
+
+    <article class="verse-card" data-aos="fade-up">
+      <p class="verse-arabic ar" lang="ar" dir="rtl">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+      <p class="verse-translation">"And among His signs is this: He created for you spouses from among yourselves, so that you may find peace and comfort in them, and He placed between you love and mercy."</p>
+      <p class="verse-ref smallcaps">Surah Ar-Rum &#183; 30:21</p>
+    </article>
+
+    <article class="verse-card" data-aos="fade-up">
+      <p class="verse-arabic ar" lang="ar" dir="rtl">وَمِن كُلِّ شَيْءٍ خَلَقْنَا زَوْجَيْنِ لَعَلَّكُمْ تَذَكَّرُونَ</p>
+      <p class="verse-translation">"And of all things We created pairs, so that you may reflect."</p>
+      <p class="verse-ref smallcaps">Surah Adh-Dhariyat &#183; 51:49</p>
+    </article>
+
+    <article class="verse-card" data-aos="fade-up">
+      <p class="verse-arabic ar" lang="ar" dir="rtl">وَأَخَذْنَ مِنكُم مِّيثَاقًا غَلِيظًا</p>
+      <p class="verse-translation">"&hellip;and they have taken from you a solemn, binding covenant."</p>
+      <p class="verse-ref smallcaps">Surah An-Nisa &#183; 4:21</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ OUR INVITATION -->
+<section id="invitation" aria-labelledby="invite-heading">
+  <div class="wrap">
+    <p class="sec-title" data-aos="fade-up">Our Invitation</p>
+    <svg class="sec-ornament" viewBox="0 0 140 16" aria-hidden="true" data-aos="fade-up">
+      <path d="M2 8 H58 M82 8 H138" stroke="currentColor" stroke-width="1" fill="none"/>
+      <path d="M70 2 l3 5 5 1 -5 1 -3 5 -3 -5 -5 -1 5 -1 Z" fill="currentColor"/>
+    </svg>
+
+    <div class="card-flip" data-aos="fade-up">
+      <div class="card-inner" id="invite-card">
+
+        <!-- sealed front -->
+        <div class="card-face card-front" role="group" aria-label="Sealed invitation. Press the seal to open.">
+          <p class="smallcaps">Dear Family &amp; Friends,</p>
+          <h3 id="invite-heading">You are Invited</h3>
+          <button type="button" class="seal-btn" id="invite-seal" aria-expanded="false" aria-controls="invite-card">
+            <span class="ar" lang="ar" dir="rtl">تَحِيَّة</span>
+          </button>
+          <p class="card-hint">Tap the seal to unfold</p>
+        </div>
+
+        <!-- unfolded back -->
+        <div class="card-face card-back" id="invite-message">
+          <p class="smallcaps">Our Invitation</p>
+          <p class="invite-message">By the grace of Allah, we &mdash; TariqAziz and Rumaan &mdash; joyfully invite you to be
+            part of our Nikah and Walima celebrations. Your presence, prayers, and blessings mean the world to us as we
+            begin this new chapter together, In Sha Allah.</p>
+          <p class="signature">With love, TariqAziz &amp; Rumaan</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ OUR VENUE -->
+<section id="venue" aria-labelledby="venue-heading">
+  <div class="wrap">
+    <p class="sec-title" data-aos="fade-up">Our Venue</p>
+    <svg class="sec-ornament" viewBox="0 0 140 16" aria-hidden="true" data-aos="fade-up">
+      <path d="M2 8 H58 M82 8 H138" stroke="currentColor" stroke-width="1" fill="none"/>
+      <path d="M70 2 l3 5 5 1 -5 1 -3 5 -3 -5 -5 -1 5 -1 Z" fill="currentColor"/>
+    </svg>
+    <h2 id="venue-heading" class="visually-hidden">Wedding venues</h2>
+
+    <div class="venue-grid">
+      <!-- NIKAH -->
+      <article class="venue-card" data-aos="fade-up">
+        <span class="venue-tag">Nikah</span>
+        <h3>Mali Munch Hall</h3>
+        <p class="venue-addr">Autonagar, Belgaum</p>
+        <p class="venue-time">Sunday, 27 September 2026 &#183; 12:45 PM</p>
+        <p class="venue-note">Ample parking available on premises</p>
+        <div class="venue-foot">
+          <a class="btn-outline" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=Mali%20Munch%20Hall%20Autonagar%20Belgaum">
+            Open in Maps
+          </a>
+        </div>
+      </article>
+
+      <!-- WALIMA -->
+      <article class="venue-card" data-aos="fade-up" data-aos-delay="120">
+        <span class="venue-tag">Walima</span>
+        <h3>Prestige Lawns</h3>
+        <p class="venue-addr">Bauxite Road, Vaibhav Nagar, Belgaum</p>
+        <p class="venue-time">Monday, 28 September 2026 &#183; 7:00 PM</p>
+        <p class="venue-note">Ample parking available on premises</p>
+        <div class="venue-foot">
+          <a class="btn-outline" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=Prestige%20Lawns%20Bauxite%20Road%20Vaibhav%20Nagar%20Belgaum">
+            Open in Maps
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TIMELINE / SCHEDULE -->
+<section id="schedule" aria-labelledby="schedule-heading">
+  <div class="wrap">
+    <p class="sec-title" data-aos="fade-up">Wedding Events</p>
+    <svg class="sec-ornament" viewBox="0 0 140 16" aria-hidden="true" data-aos="fade-up">
+      <path d="M2 8 H58 M82 8 H138" stroke="currentColor" stroke-width="1" fill="none"/>
+      <path d="M70 2 l3 5 5 1 -5 1 -3 5 -3 -5 -5 -1 5 -1 Z" fill="currentColor"/>
+    </svg>
+    <h2 id="schedule-heading" class="visually-hidden">Event schedule</h2>
+
+    <div class="tl">
+      <div class="tl-item">
+        <span class="tl-marker" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 l6.2 2.8 2.8 6.2 -2.8 6.2 -6.2 2.8 -6.2 -2.8 -2.8 -6.2 2.8 -6.2 Z" fill="currentColor"/></svg>
+        </span>
+        <article class="tl-card" data-aos="fade-right">
+          <h3>Nikah Ceremony</h3>
+          <p class="when">Sunday, 27 September 2026 &#183; 12:45 PM</p>
+          <p class="where">Mali Munch Hall, Autonagar, Belgaum</p>
+          <p class="note">Ample parking available on premises</p>
+        </article>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-marker" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 l6.2 2.8 2.8 6.2 -2.8 6.2 -6.2 2.8 -6.2 -2.8 -2.8 -6.2 2.8 -6.2 Z" fill="currentColor"/></svg>
+        </span>
+        <article class="tl-card" data-aos="fade-right">
+          <h3>Walima Ceremony</h3>
+          <p class="when">Monday, 28 September 2026 &#183; 7:00 PM</p>
+          <p class="where">Prestige Lawns, Bauxite Road, Vaibhav Nagar, Belgaum</p>
+          <p class="note">Ample parking available on premises</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ COUNTDOWN -->
+<section id="countdown" class="amber" aria-labelledby="cd-heading">
+  <div class="embers" aria-hidden="true"></div>
+  <div class="countdown-stars" id="countdown-stars" aria-hidden="true"></div>
+
+  <div class="wrap" style="position:relative;">
+    <p class="sec-title" id="cd-heading" data-aos="fade-up">Counting the Moments</p>
+    <svg class="sec-ornament" viewBox="0 0 140 16" aria-hidden="true" data-aos="fade-up">
+      <path d="M2 8 H58 M82 8 H138" stroke="currentColor" stroke-width="1" fill="none"/>
+      <path d="M70 2 l3 5 5 1 -5 1 -3 5 -3 -5 -5 -1 5 -1 Z" fill="currentColor"/>
+    </svg>
+
+    <div class="cd-grid">
+
+      <!-- Nikah countdown -->
+      <div class="cd-box" role="timer"
+           aria-label="Countdown to the Nikah on Sunday, 27 September 2026 at 12:45 PM">
+        <svg class="spark s1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+        <svg class="spark s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+        <svg class="spark s3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+        <svg class="spark s4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+
+        <p class="cd-eyebrow">Until Our Nikah</p>
+        <p class="cd-target">27 September 2026 &#183; 12:45 PM</p>
+
+        <div class="cd-nums" id="cd-nikah" aria-hidden="true">
+          <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Days</span></div>
+          <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Hours</span></div>
+          <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Min</span></div>
+          <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Sec</span></div>
+        </div>
+      </div>
+
+      <!-- Walima countdown -->
+      <div class="cd-box" role="timer"
+           aria-label="Countdown to the Walima on Monday, 28 September 2026 at 7:00 PM">
+        <svg class="spark s1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+        <svg class="spark s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+        <svg class="spark s3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+        <svg class="spark s4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 C13 8 16 11 23 12 C16 13 13 16 12 23 C11 16 8 13 1 12 C8 11 11 8 12 1 Z" fill="currentColor"/></svg>
+
+        <p class="cd-eyebrow">Until Our Walima</p>
+        <p class="cd-target">28 September 2026 &#183; 7:00 PM</p>
+
+        <div class="cd-nums" id="cd-walima" aria-hidden="true">
+          <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Days</span></div>
+          <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Hours</span></div>
+          <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Min</span></div>
+          <div class="cd-cell"><span class="cd-num">00</span><span class="cd-lab">Sec</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <noscript>
+      <p class="ns-note">
+        Nikah — Sunday, 27 September 2026, 12:45 PM at Mali Munch Hall, Autonagar, Belgaum.<br>
+        Walima — Monday, 28 September 2026, 7:00 PM at Prestige Lawns, Bauxite Road, Vaibhav Nagar, Belgaum.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<!-- ============================================================ BLESSINGS -->
+<section id="blessings" aria-labelledby="bless-heading">
+  <div class="wrap">
+    <p class="sec-title" data-aos="fade-up">Blessings</p>
+    <svg class="sec-ornament" viewBox="0 0 140 16" aria-hidden="true" data-aos="fade-up">
+      <path d="M2 8 H58 M82 8 H138" stroke="currentColor" stroke-width="1" fill="none"/>
+      <path d="M70 2 l3 5 5 1 -5 1 -3 5 -3 -5 -5 -1 5 -1 Z" fill="currentColor"/>
+    </svg>
+
+    <p class="bless-intro" data-aos="fade-up">There is no gift greater than the presence of loved ones.
+      Your coming is our joy, and your prayers are our treasure.</p>
+
+    <div class="bless-grid">
+      <article class="bless-card" data-aos="fade-up">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2 l3.2 6.8 7.3 .9 -5.5 5 1.5 7.2 -6.5 -3.6 -6.5 3.6 1.5 -7.2 -5.5 -5 7.3 -.9 Z" fill="currentColor"/>
+        </svg>
+        <h3>Your Presence</h3>
+        <p>Your love, laughter, and duas are the greatest gift we could ask for.</p>
+      </article>
+
+      <article class="bless-card" data-aos="fade-up" data-aos-delay="120">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2.6 c4 1.2 7 1.2 9 .4 -1 6.4 -3.4 11 -9 13.4 -5.6 -2.4 -8 -7 -9 -13.4 2 .8 5 .8 9 -.4 Z" fill="currentColor"/>
+          <path d="M8.5 10 l2.6 2.8 4.4 -5" stroke="#FAF1E1" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Duas</h3>
+        <p>Please keep TariqAziz and Rumaan in your prayers as they begin this new journey, In Sha Allah.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer aria-label="Closing">
+  <div class="embers" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="monogram" aria-hidden="true"><span>T &amp; R</span></div>
+    <p class="names">Md TariqAziz Shaikh &amp; Umme Rumaan Sayed</p>
+    <p class="thanks">Thank you for being a part of our story. Ameen.</p>
+    <p class="meta">#TariqAndRumaan &#183; 27 &amp; 28 September 2026 &#183; Belgaum</p>
+    <p class="signoff">With love, from the Shaikh &amp; Sayed Families</p>
+  </div>
+</footer>
+
+<!-- AOS (single scroll-animation library) -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var root = document.documentElement;
+  root.classList.remove("no-js");
+  if (typeof window.AOS !== "function") root.classList.add("no-aos");
+
+  /* ------------------------------------------------------------
+     Scroll lock + envelope intro
+     ------------------------------------------------------------ */
+  var intro = document.getElementById("intro");
+  var envelope = document.getElementById("envelope");
+  var seal = document.getElementById("seal");
+  var opened = false;
+
+  function finalizeOpen() {
+    if (!opened) return;              /* guard: single execution */
+    opened = false;
+    if (intro) {
+      intro.setAttribute("aria-hidden", "true");
+      intro.style.display = "none";
+    }
+    document.body.classList.remove("lock");
+    var heroTitle = document.getElementById("hero-title");
+    if (heroTitle) heroTitle.focus({ preventScroll: true });
+  }
+
+  function openIntro() {
+    if (opened) return;
+    opened = true;
+    document.body.classList.add("lock");
+
+    if (reduceMotion) {
+      /* reduced motion: no rays/flap/lift - reveal hero instantly */
+      if (intro) { intro.classList.add("lift"); intro.style.display = "none"; }
+      if (envelope) { envelope.setAttribute("aria-hidden", "true"); envelope.removeAttribute("tabindex"); }
+      if (seal) seal.setAttribute("aria-hidden", "true");
+      finalizeOpen();
+      return;
+    }
+
+    /* 0ms — tap: rays SNAP to full brightness (sharp increase, ~150-200ms,
+       no prior delay) while the seal dissolves into the burst behind it */
+    if (intro) intro.classList.add("rayed");
+    if (seal) seal.classList.add("broken");
+
+    /* +300ms — brief hold at peak (~150-250ms), then the rays fade OUT
+       IN PLACE (no translation of the burst element); the flap
+       simultaneously peels open around its top hinge underneath */
+    window.setTimeout(function () {
+      if (intro) intro.classList.add("rayed-fade");
+      if (envelope) envelope.classList.add("peeled");
+    }, 300);
+
+    /* +760ms — envelope shell + intro lift up off-screen, hero revealed */
+    window.setTimeout(function () {
+      if (envelope) {
+        envelope.classList.add("lift");
+        envelope.setAttribute("aria-hidden", "true");
+        envelope.removeAttribute("tabindex");
+      }
+      if (seal) seal.setAttribute("aria-hidden", "true");
+      if (intro) intro.classList.add("lift");
+    }, 760);
+
+    /* +1220ms — cleanup */
+    window.setTimeout(finalizeOpen, 1220);
+  }
+
+  if (reduceMotion) {
+    openIntro();                     /* skip envelope entirely */
+  } else {
+    var pressable = [envelope, seal];
+    for (var i = 0; i < pressable.length; i++) {
+      (function (el) {
+        if (!el) return;
+        el.addEventListener("click", openIntro);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openIntro();
+          }
+        });
+      })(pressable[i]);
+    }
+
+    }
+
+  
+  /* ------------------------------------------------------------
+     Invitation flip card (sealed -> unfolded)
+     ------------------------------------------------------------ */
+  var inviteCard = document.getElementById("invite-card");
+  var inviteSeal = document.getElementById("invite-seal");
+  if (inviteSeal && inviteCard) {
+    function openInvite() {
+      var isOpen = inviteCard.classList.toggle("open");
+      inviteSeal.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      if (isOpen) inviteSeal.setAttribute("aria-label", "Invitation opened");
+      else inviteSeal.setAttribute("aria-label", "Fold the invitation");
+    }
+    inviteSeal.addEventListener("click", openInvite);
+    inviteSeal.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openInvite(); }
+    });
+    if (reduceMotion) openInvite();   /* reduced motion: show unfolded directly */
+  }
+
+  /* ------------------------------------------------------------
+     Countdown - drift-corrected: recompute from Date.now() every tick
+     (one setInterval for BOTH timers; never duplicated)
+     ------------------------------------------------------------ */
+  var NIKAH  = new Date("2026-09-27T12:45:00+05:30").getTime();
+  var WALIMA = new Date("2026-09-28T19:00:00+05:30").getTime();
+
+  function cellsFor(id) {
+    var box = document.getElementById(id);
+    if (!box) return null;
+    return box.querySelectorAll(".cd-num");
+  }
+  var nikCells = cellsFor("cd-nikah");
+  var walCells = cellsFor("cd-walima");
+
+  function pad(n) { return String(n).padStart(2, "0"); }
+
+  function renderCountdown(target, cells) {
+    if (!cells) return false;
+    var ms = Math.max(0, target - Date.now());    /* drift-corrected */
+    var d = Math.floor(ms / 86400000); ms -= d * 86400000;
+    var h = Math.floor(ms / 3600000);  ms -= h * 3600000;
+    var m = Math.floor(ms / 60000);    ms -= m * 60000;
+    var s = Math.floor(ms / 1000);
+    cells[0].textContent = pad(d);
+    cells[1].textContent = pad(h);
+    cells[2].textContent = pad(m);
+    cells[3].textContent = pad(s);
+    return ms > 0;
+  }
+
+  var nikAlive = renderCountdown(NIKAH, nikCells);
+  var walAlive = renderCountdown(WALIMA, walCells);
+  if (nikAlive || walAlive) {
+    var cdTimer = window.setInterval(function () {
+      nikAlive = renderCountdown(NIKAH, nikCells);
+      walAlive = renderCountdown(WALIMA, walCells);
+      if (!nikAlive && !walAlive) {
+        /* both reached: stop the single interval, hold at zeros */
+        window.clearInterval(cdTimer);
+      }
+    }, 1000);
+  }
+
+  /* ------------------------------------------------------------
+     Ambient particles - hero shimmer + countdown stars + embers
+     (transform/opacity only; skipped under reduced motion)
+     ------------------------------------------------------------ */
+  /* total particle budget: ~30 visible per viewport, capped on mobile */
+  var isMobile = window.matchMedia && window.matchMedia("(max-width:600px)").matches;
+  var heroCount = isMobile ? 20 : 30;
+  var emberCount = isMobile ? 14 : 22;
+
+  function makeParticle(host, cls, symbol) {
+    var i = document.createElement("i");
+    i.className = cls;
+    i.style.left = (Math.random() * 100).toFixed(2) + "%";
+    i.style.top = (Math.random() * 100).toFixed(2) + "%";
+    /* size + brightness variance for depth */
+    var big = Math.random() < .2;
+    i.style.width = i.style.height = (big ? 3.5 : 2) + Math.random() * 2.2 + "px";
+    i.style.setProperty("--scl", (big ? 1.25 : .7 + Math.random() * .5).toFixed(2));
+    i.style.setProperty("--peak", (big ? .95 : .5 + Math.random() * .3).toFixed(2));
+    /* independent slow drift: 8-20s, 20-70px vertical, random delay */
+    i.style.setProperty("--dur", (8 + Math.random() * 12).toFixed(1) + "s");
+    i.style.setProperty("--dy", (20 + Math.random() * 50).toFixed(0) + "px");
+    if (cls === "embers i") {
+      i.style.setProperty("--dx", ((Math.random() * 80) - 40).toFixed(0) + "px");
+    }
+    /* negative delay: start mid-flight so particles are visible instantly */
+    i.style.animationDelay = (Math.random() * -8).toFixed(2) + "s";
+    if (symbol) { i.textContent = symbol; }
+    host.appendChild(i);
+  }
+
+  function scatter(id, count, symbol) {
+    var host = document.getElementById(id);
+    if (!host || reduceMotion) return;
+    for (var k = 0; k < count; k++) makeParticle(host, id === "hero-particles" ? "hero-particles i" : "countdown-stars i", symbol);
+  }
+  function scatterInto(el, count) {
+    for (var k = 0; k < count; k++) makeParticle(el, "embers i");
+  }
+  setTimeout(function () {
+    scatter("hero-particles", heroCount);
+    scatter("countdown-stars", isMobile ? 10 : 16, "\u2726");
+    var amberHosts = document.querySelectorAll("section.amber .embers, footer .embers");
+    for (var a = 0; a < amberHosts.length; a++) {
+      scatterInto(amberHosts[a], emberCount);
+    }
+  }, 400);
+
+  /* ------------------------------------------------------------
+     One scroll-animation library: AOS. No custom scroll JS.
+     ------------------------------------------------------------ */
+  if (typeof window.AOS === "function") {
+    window.AOS.init({
+      duration: 850,
+      easing: "cubic-bezier(0.65, 0, 0.35, 1)",
+      once: true,
+      offset: 70,
+      disable: reduceMotion
+    });
+  }
+})();
+</script>
+</body>
+</html>
