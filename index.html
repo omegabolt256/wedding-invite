@@ -11,6 +11,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nikah &amp; Walima — TariqAziz &amp; Rumaan">
 <meta property="og:description" content="Together with their families. Nikah: Sun 27 Sep 2026, 12:45 PM · Mali Munch Hall, Autonagar, Belgaum. Walima: Mon 28 Sep 2026, 7:00 PM · Prestige Lawns, Belgaum. #TariqAndRumaan">
+<meta property="og:image" content="a_formal_wedding_invitation_card_graphic_on_a_rich.png">
+<meta name="twitter:image" content="a_formal_wedding_invitation_card_graphic_on_a_rich.png">
 <meta property="og:site_name" content="TariqAziz &amp; Rumaan">
 <meta name="twitter:card" content="summary">
 
@@ -97,7 +99,11 @@ html.no-aos [data-aos]{ opacity:1 !important; transform:none !important; transit
   transition: transform .72s var(--ease);
   overflow:hidden;
 }
-#intro.lift{ transform:translate3d(0,-101%,0); pointer-events:none; }
+#intro.lift{
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .72s var(--ease);
+}
 
 /* radiant light rays behind the envelope: a bright glowing core sits at
    the seal, soft-blurred spokes radiate outward and fade to transparent
@@ -108,17 +114,17 @@ html.no-aos [data-aos]{ opacity:1 !important; transform:none !important; transit
 .rays{
   position:absolute; inset:0; z-index:1;
   background:repeating-conic-gradient(
-    rgba(255,243,196,.95) 0deg 1.4deg,
-    rgba(255,243,196,0) 1.4deg 9.5deg
+    rgba(255,243,196,.98) 0deg 2.1deg,
+    rgba(255,243,196,0) 2.1deg 8.8deg
   );
   /* spokes fade in intensity with distance from center (bright core -> transparent tips) */
-  -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.35) 58%, transparent 78%);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.35) 58%, transparent 88%);
   mask-image:radial-gradient(circle at 50% 50%, #000 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.35) 58%, transparent 78%);
   /* soft luminous quality on each ray - not a crisp edge */
   filter:blur(1.4px);
   -webkit-filter:blur(1.4px);
   opacity:0;
-  transition:opacity .18s linear;   /* rays SNAP to full brightness ~150-200ms after tap */
+  transition:opacity .65s ease;   /* slower, smoother radiant reveal */
   will-change:opacity;
   pointer-events:none;
 }
@@ -127,10 +133,12 @@ html.no-aos [data-aos]{ opacity:1 !important; transform:none !important; transit
   content:""; position:absolute; inset:0;
   background:radial-gradient(circle at 50% 50%, #FFF8DC 0%, rgba(255,236,180,.75) 14%, rgba(255,220,140,.28) 34%, transparent 55%);
 }
-#intro.rayed .rays{ opacity:1; }
+#intro.rayed .rays{ opacity:1; filter:blur(1.8px) drop-shadow(0 0 14px rgba(255,215,120,.95)) drop-shadow(0 0 32px rgba(255,200,80,.78)); transform:scale(1.12); transition:opacity .9s ease, transform .9s ease, filter .9s ease; }
 #intro.rayed-fade .rays{
   opacity:0;
-  transition:opacity .38s linear;   /* fade out IN PLACE - no movement */
+  transform:scale(1.22);
+  filter:blur(2.2px) drop-shadow(0 0 18px rgba(255,215,120,.95)) drop-shadow(0 0 44px rgba(255,200,80,.82));
+  transition:opacity 1.15s linear, transform 1.15s ease, filter 1.15s ease;   /* slower fade, in place */
 }
 
 /* decorative filigree corners drawn on the stage */
@@ -165,7 +173,7 @@ html.no-aos [data-aos]{ opacity:1 !important; transform:none !important; transit
 
 /* "peel away" lift: after rays + seal dissolve, the open envelope
    translates up off-screen quickly, revealing the hero underneath */
-.envelope.lift{ transition:transform .55s var(--ease); transform:translate3d(0,-140%,0); }
+.envelope.lift{ transform:none; }
 
 /* envelope body (back panel + drawn folds) */
 .env-body{
@@ -1129,7 +1137,7 @@ noscript{ display:block; }
     window.setTimeout(function () {
       if (intro) intro.classList.add("rayed-fade");
       if (envelope) envelope.classList.add("peeled");
-    }, 300);
+    }, 600);
 
     /* +760ms — envelope shell + intro lift up off-screen, hero revealed */
     window.setTimeout(function () {
@@ -1140,10 +1148,10 @@ noscript{ display:block; }
       }
       if (seal) seal.setAttribute("aria-hidden", "true");
       if (intro) intro.classList.add("lift");
-    }, 760);
+    }, 900);
 
     /* +1220ms — cleanup */
-    window.setTimeout(finalizeOpen, 1220);
+    window.setTimeout(finalizeOpen, 2100);
   }
 
   if (reduceMotion) {
@@ -1235,8 +1243,8 @@ noscript{ display:block; }
      ------------------------------------------------------------ */
   /* total particle budget: ~30 visible per viewport, capped on mobile */
   var isMobile = window.matchMedia && window.matchMedia("(max-width:600px)").matches;
-  var heroCount = isMobile ? 20 : 30;
-  var emberCount = isMobile ? 14 : 22;
+  var heroCount = isMobile ? 40 : 70;
+  var emberCount = isMobile ? 30 : 50;
 
   function makeParticle(host, cls, symbol) {
     var i = document.createElement("i");
